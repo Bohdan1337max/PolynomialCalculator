@@ -4,6 +4,7 @@ namespace PolynomialCalculator;
 
 public partial class Form1 : Form
 {
+    
     public Form1()
     {
         InitializeComponent();
@@ -21,9 +22,8 @@ public partial class Form1 : Form
     // -1,3+128-2
     // (-2x^3+2x^2-2x+1)*5
 
-    private void PolynomialHandler(string wholePolynomial)
+    private void PolynomialHandler(string wholePolynomial) 
     {
-        string term = "";
         if (wholePolynomial.Contains(','))
         {
             var dPoly = MonomialParser<double>(wholePolynomial);
@@ -131,6 +131,7 @@ public partial class Form1 : Form
 
         }
 
+        Polynomial<T> p1 = new Polynomial<T>(monomials);
         return monomials;
     }
 }
