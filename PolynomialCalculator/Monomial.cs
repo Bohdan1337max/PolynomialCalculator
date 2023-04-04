@@ -12,6 +12,8 @@ namespace PolynomialCalculator
         private T _coefficient;
         private int _exponent ;
 
+
+        
         public Monomial(T coefficient, string nomial = "", int exponent = 1)
         {
             _nomial = nomial;
@@ -19,7 +21,18 @@ namespace PolynomialCalculator
             _exponent = exponent;
 
         }
-        
+
+        public int GetExp()
+        {
+            return _exponent;
+        }
+
+        public string GetNomial()
+        {
+            return _nomial;
+        }
+
+
         public static Monomial<T> operator +(Monomial<T> mnLeft, Monomial<T> mnRight)
         {
             return new Monomial<T>(mnLeft._coefficient + mnRight._coefficient,
