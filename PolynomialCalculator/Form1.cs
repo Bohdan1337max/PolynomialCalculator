@@ -57,7 +57,7 @@ public partial class Form1 : Form
         }
 
         while (coef.Length == 0 || coef.Length >= 1 &&
-               (polynomial[pos] != '+' && polynomial[pos] != '-' && polynomial[pos] != 'x'))
+               (polynomial[pos] != '+' && polynomial[pos] != '-' && polynomial[pos] != 'x' &&  polynomial[pos] != '^'))
         {
             coef += polynomial[pos];
             lenght++;
@@ -88,6 +88,7 @@ public partial class Form1 : Form
         if (polynomial[pos] == '^')
         {
             pos++;
+            lenght++;
             while (polynomial[pos] != '+' && polynomial[pos] != '-' && polynomial[pos] != '*' && pos != polynomial.Length )
             {
                 exp += polynomial[pos];
