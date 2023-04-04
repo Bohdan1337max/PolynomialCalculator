@@ -1,0 +1,17 @@
+C:\Users\shako\PolynomialCalculator\PolynomialCalculator\bin\Debug\net7.0-windows\PolynomialCalculator.exe
+C:\Users\shako\PolynomialCalculator\PolynomialCalculator\bin\Debug\net7.0-windows\PolynomialCalculator.deps.json
+C:\Users\shako\PolynomialCalculator\PolynomialCalculator\bin\Debug\net7.0-windows\PolynomialCalculator.runtimeconfig.json
+C:\Users\shako\PolynomialCalculator\PolynomialCalculator\bin\Debug\net7.0-windows\PolynomialCalculator.dll
+C:\Users\shako\PolynomialCalculator\PolynomialCalculator\bin\Debug\net7.0-windows\PolynomialCalculator.pdb
+C:\Users\shako\PolynomialCalculator\PolynomialCalculator\obj\Debug\net7.0-windows\PolynomialCalculator.csproj.AssemblyReference.cache
+C:\Users\shako\PolynomialCalculator\PolynomialCalculator\obj\Debug\net7.0-windows\PolynomialCalculator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\shako\PolynomialCalculator\PolynomialCalculator\obj\Debug\net7.0-windows\PolynomialCalculator.AssemblyInfoInputs.cache
+C:\Users\shako\PolynomialCalculator\PolynomialCalculator\obj\Debug\net7.0-windows\PolynomialCalculator.AssemblyInfo.cs
+C:\Users\shako\PolynomialCalculator\PolynomialCalculator\obj\Debug\net7.0-windows\PolynomialCalculator.csproj.CoreCompileInputs.cache
+C:\Users\shako\PolynomialCalculator\PolynomialCalculator\obj\Debug\net7.0-windows\PolynomialCalculator.dll
+C:\Users\shako\PolynomialCalculator\PolynomialCalculator\obj\Debug\net7.0-windows\refint\PolynomialCalculator.dll
+C:\Users\shako\PolynomialCalculator\PolynomialCalculator\obj\Debug\net7.0-windows\PolynomialCalculator.pdb
+C:\Users\shako\PolynomialCalculator\PolynomialCalculator\obj\Debug\net7.0-windows\PolynomialCalculator.genruntimeconfig.cache
+C:\Users\shako\PolynomialCalculator\PolynomialCalculator\obj\Debug\net7.0-windows\ref\PolynomialCalculator.dll
+C:\Users\shako\PolynomialCalculator\PolynomialCalculator\obj\Debug\net7.0-windows\PolynomialCalculator.Form1.resources
+C:\Users\shako\PolynomialCalculator\PolynomialCalculator\obj\Debug\net7.0-windows\PolynomialCalculator.csproj.GenerateResource.cache
