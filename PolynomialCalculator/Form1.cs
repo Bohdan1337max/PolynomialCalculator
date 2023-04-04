@@ -52,10 +52,9 @@ public partial class Form1 : Form
         int lenght = 0;
         if (polynomial[pos] == 'x')
         {
-            var gValue = (T)Convert.ChangeType(1, typeof(T));
-            return (gValue, lenght);
+            var cValue = (T)Convert.ChangeType(1, typeof(T));
+            return (cValue, lenght);
         }
-
         while (coef.Length == 0 || coef.Length >= 1 &&
                (polynomial[pos] != '+' && polynomial[pos] != '-' && polynomial[pos] != 'x' &&  polynomial[pos] != '^'))
         {
@@ -64,7 +63,12 @@ public partial class Form1 : Form
             pos++;
             if (pos == polynomial.Length)
                 break;
+
         }
+        if (coef == "+" )
+            return (T.Parse ("1", null), 1);
+        if(coef == "-")
+            return (T.Parse("-1", null), 1);
         return (T.Parse(coef, null), lenght);
     }
 
