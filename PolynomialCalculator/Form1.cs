@@ -114,10 +114,9 @@ public partial class Form1 : Form
     // 3+1,28-2
     // -2x^3+2x^2-2x+1
     //TODO handle that exp add like coef!.
-    public Dictionary<int,Monomial<T>> MonomialParser<T>(string polynomial) where T : INumber<T>
+    public List<Monomial<T>> MonomialParser<T>(string polynomial) where T : INumber<T>
     {
-        //List<Monomial<T>> monomials = new List<Monomial<T>>();
-        Dictionary<int, Monomial<T>> monomials = new Dictionary<int, Monomial<T>>();
+        List<Monomial<T>> monomials = new List<Monomial<T>>();
         int pos = 0;
         while (pos < polynomial.Length)
         {
@@ -129,13 +128,13 @@ public partial class Form1 : Form
             pos += expLength;
             Monomial<T> monomial = new Monomial<T>(coef, nomial, exp);
             if (monomial.GetNomial() == "x")
-                monomials.Add(monomial.GetExp(), monomial);
+                monomials.Add(monomial);
             else if (monomial.GetNomial() == "")
-                monomials.Add(0, monomial);
+                monomials.Add(monomial);
 
         }
 
-        Polynomial<T> p1 = new Polynomial<T>(monomials);
+        
         return monomials;
     }
 }

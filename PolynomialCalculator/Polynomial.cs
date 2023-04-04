@@ -6,14 +6,9 @@ namespace PolynomialCalculator;
 public class Polynomial<T> where T : INumber<T>
 {
     //TODO Use method if can we make action monomial and return this as the result
-    public Dictionary<int, Monomial<T>> Monomials { get; } = new Dictionary<int, Monomial<T>>();
+    public List<Monomial<T>> Monomials { get; } = new List<Monomial<T>>();
 
-    
-
-    public Polynomial(Dictionary<int, Monomial<T>> monomials)
-    {
-        this.Monomials = monomials;
-    }
+   
 
 
 
