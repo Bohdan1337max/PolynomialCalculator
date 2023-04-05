@@ -39,14 +39,14 @@ partial class Form1
         // 
         // PolynomialInput
         // 
-        PolynomialInput.Location = new Point(297, 73);
+        PolynomialInput.Location = new Point(323, 74);
         PolynomialInput.Name = "PolynomialInput";
         PolynomialInput.Size = new Size(387, 23);
         PolynomialInput.TabIndex = 0;
         // 
         // CalculateButton
         // 
-        CalculateButton.Location = new Point(740, 73);
+        CalculateButton.Location = new Point(750, 73);
         CalculateButton.Name = "CalculateButton";
         CalculateButton.Size = new Size(75, 23);
         CalculateButton.TabIndex = 1;
@@ -57,10 +57,10 @@ partial class Form1
         // label1
         // 
         label1.AutoSize = true;
-        label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-        label1.Location = new Point(166, 158);
+        label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+        label1.Location = new Point(163, 147);
         label1.Name = "label1";
-        label1.Size = new Size(78, 25);
+        label1.Size = new Size(86, 30);
         label1.TabIndex = 2;
         label1.Text = "Answer:";
         label1.Click += label1_Click;
@@ -86,7 +86,7 @@ partial class Form1
         // 
         label3.AutoSize = true;
         label3.Font = new Font("Showcard Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        label3.Location = new Point(405, 37);
+        label3.Location = new Point(422, 31);
         label3.Name = "label3";
         label3.Size = new Size(170, 20);
         label3.TabIndex = 5;
