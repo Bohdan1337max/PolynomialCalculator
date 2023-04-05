@@ -48,33 +48,27 @@ namespace PolynomialCalculator
 
         public override string ToString()
         {
-            if(this.Exponent == 1)
+            if(Exponent == 1)
             {
-                if (!this.Coefficient.ToString().Contains('-'))
+                if (!Coefficient.ToString()!.Contains('-'))
                 {
                     return $"+{Coefficient}" +
                    $"{Nomial}";
                 }
-                else
-                {
-                    return $"{Coefficient}" +
-                   $"{Nomial}";
-                }
+                return $"{Coefficient}" +
+                       $"{Nomial}";
+            }
+            if (!Coefficient.ToString()!.Contains('-'))
+            {
+                return $"+{Coefficient}" +
+                       $"{Nomial}" +
+                       $"^{Exponent}";
             }
             else
             {
-                if (!this.Coefficient.ToString().Contains('-'))
-                {
-                    return $"+{Coefficient}" +
-                   $"{Nomial}" +
-                   $"^{Exponent}";
-                }
-                else
-                {
-                    return $"{Coefficient}" +
-                   $"{Nomial}" +
-                   $"^{Exponent}";
-                }
+                return $"{Coefficient}" +
+                       $"{Nomial}" +
+                       $"^{Exponent}";
             }
         }
     }
