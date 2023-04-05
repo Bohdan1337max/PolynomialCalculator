@@ -24,7 +24,7 @@ public partial class Form1 : Form
 
     private void TypeChecker(string wholePolynomial)
     {
-        if (wholePolynomial.Contains(','))
+        if (wholePolynomial.Contains('.'))
         {
             PolynomialHandler<double>(wholePolynomial);
         }
