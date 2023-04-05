@@ -73,7 +73,7 @@ public partial class Form1 : Form
         {
             result= result.TrimStart('+');
         }
-
+        SaveToFile(result);
         textBox1.Text = result;
     }
 
