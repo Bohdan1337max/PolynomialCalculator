@@ -24,7 +24,7 @@ public partial class Form1 : Form
 
     private void TypeChecker(string wholePolynomial)
     {
-        if (wholePolynomial.Contains(','))
+        if (wholePolynomial.Contains('.'))
         {
             PolynomialHandler<double>(wholePolynomial);
         }
@@ -35,7 +35,7 @@ public partial class Form1 : Form
     }
 
 
-//x^2+2x+x^2
+//2*3
     private void PolynomialHandler<T>(string polynomial) where T : INumber<T>
     {
         var result = new List<Monomial<T>>();
@@ -43,7 +43,12 @@ public partial class Form1 : Form
         string mono = "";
         for (int i = 0; i < poly.Count(); i++)
         {
-            
+            if (poly[i].IsMultiplication)
+            {
+                poly[i - 1] *= poly[i];
+                poly.Remove(poly[i]);
+                i--;
+            }
             
         }
         
@@ -86,10 +91,6 @@ public partial class Form1 : Form
         
     }
     
-
-    //Pars operators
-    //make class node three
-    //
     
 
     // -1,3+128-2
