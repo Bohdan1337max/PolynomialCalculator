@@ -40,6 +40,7 @@ public partial class Form1 : Form
     {
         var result = new List<Monomial<T>>();
         var poly = MonomialParser<T>(polynomial);
+        string mono = "";
         for (int i = 0; i < poly.Count(); i++)
         {
             
@@ -63,11 +64,26 @@ public partial class Form1 : Form
             }
             result.Add(poly[i]);
         }
+        
+        //Print<T>(poly);
+        
         foreach (var monomial in poly)
         {
-         textBox1.AppendText(monomial.ToString());   
-            
+            mono += monomial.ToString();
         }
+
+        if (mono[0] == '+')
+        {
+            mono.TrimStart('+');
+        }
+        textBox1.Text = mono;
+
+    }
+
+    private void Print<T>(List<Monomial<T>> poly) where T : INumber<T>
+    {
+
+        
     }
     
 
