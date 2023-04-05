@@ -16,60 +16,102 @@ public partial class Form1 : Form
 
     private void CalculateButton_Click(object sender, EventArgs e)
     {
-        PolynomialHandler(PolynomialInput.Text);
+        TypeChecker(PolynomialInput.Text);
     }
 
     // -1,3+128-2
     // (-2x^3+2x^2-2x+1)*5
 
-    private void PolynomialHandler(string wholePolynomial) 
+    private void TypeChecker(string wholePolynomial)
     {
         if (wholePolynomial.Contains(','))
         {
-            var dPoly = MonomialParser<double>(wholePolynomial);
-            textBox1.Text = dPoly.ToString();
-
-
+            PolynomialHandler<double>(wholePolynomial);
         }
         else
         {
-            var iPoly = MonomialParser<int>(wholePolynomial);
-            foreach (var monomial in iPoly)
-            {
-                textBox1.AppendText(monomial.ToString());
-            }
-    
+            PolynomialHandler<int>(wholePolynomial);
         }
-
-
     }
+
+
+//x^2+2x+x^2
+    private void PolynomialHandler<T>(string polynomial) where T : INumber<T>
+    {
+        var result = new List<Monomial<T>>();
+        var poly = MonomialParser<T>(polynomial);
+        for (int i = 0; i < poly.Count(); i++)
+        {
+            
+            
+        }
+        
+        for (int i = 0; i < poly.Count; i++)
+        {
+            for (int j = i + 1; j < poly.Count  ; j++)
+            {
+                if (poly[i].HaveSameNomial(poly[j]))
+                {
+                    poly[i] += poly[j];
+                    poly.Remove(poly[j]);
+                    j--;
+                }
+                else
+                {
+                    result.Add(poly[i]);
+                }
+            }
+            result.Add(poly[i]);
+        }
+        foreach (var monomial in poly)
+        {
+         textBox1.AppendText(monomial.ToString());   
+            
+        }
+    }
+    
+
+    //Pars operators
+    //make class node three
+    //
+    
 
     // -1,3+128-2
     // -2x^3+2x^2-2x+1
-    private (T coef, int lenght) ParseCoefficient<T>(string polynomial, int pos) where T : INumber<T>
+    private static (T coef, int lenght, bool isMultiplication) ParseCoefficient<T>(string polynomial, int pos) where T : INumber<T>
     {
-        string coef = "";
-        int lenght = 0;
+        var coef = "";
+        var lenght = 0;
+        var isMultiplication = false;
         if (polynomial[pos] == 'x')
         {
             var cValue = (T)Convert.ChangeType(1, typeof(T));
-            return (cValue, lenght);
+            return (cValue, lenght, isMultiplication);
         }
         while (coef.Length == 0 || coef.Length >= 1 &&
-               (polynomial[pos] != '+' && polynomial[pos] != '-' && polynomial[pos] != 'x' &&  polynomial[pos] != '^'))
+               (polynomial[pos] != '+' && polynomial[pos] != '-' && polynomial[pos] != 'x' && polynomial[pos] != '*'
+                &&  polynomial[pos] != '^'))
         {
+            if (polynomial[pos] == '*')
+            {
+                isMultiplication = true;
+                pos++;
+                lenght++;
+                continue;
+            }
             coef += polynomial[pos];
             lenght++;
             pos++;
             if (pos == polynomial.Length)
                 break;
-
         }
-        if (coef == "+" )
-            return (T.Parse ("1", null), 1);
-        if(coef == "-")
-            return (T.Parse("-1", null), 1);
-        return (T.Parse(coef, null), lenght);
+        return coef switch
+        {
+            "x" => (T.Parse("1", null), 1,isMultiplication),
+            "+" => (T.Parse("1", null), 1,isMultiplication),
+            "-" => (T.Parse("-1", null), 1,isMultiplication),
+            _ => (T.Parse(coef, null), lenght,isMultiplication)
+        };
     }
 
     // 3+1,28-2
@@ -85,8 +127,8 @@ public partial class Form1 : Form
 
     private (int exp, int length) ParseExp(string polynomial, int pos)
     {
-        string exp = "";
-        int lenght = 0;
+        var exp = "";
+        var lenght = 0;
         if (pos == polynomial.Length)
             pos -= 1;
         if (polynomial[pos] == '^')
@@ -100,41 +142,31 @@ public partial class Form1 : Form
                 pos++;
                 if (pos == polynomial.Length)
                     break;
-                
             }
         }
         else
         {
             return (1, 0);
         }
-        
-        
         return (int.Parse(exp), lenght);
     }
     // 3+1,28-2
     // -2x^3+2x^2-2x+1
-    //TODO handle that exp add like coef!.
     public List<Monomial<T>> MonomialParser<T>(string polynomial) where T : INumber<T>
     {
-        List<Monomial<T>> monomials = new List<Monomial<T>>();
-        int pos = 0;
+        var monomials = new List<Monomial<T>>();
+        var pos = 0;
         while (pos < polynomial.Length)
         {
-            var (coef, coefLength) = ParseCoefficient<T>(polynomial, pos);
+            var (coef, coefLength,isMultiplication) = ParseCoefficient<T>(polynomial, pos);
             pos += coefLength;
             var (nomial, nomialLength) = ParseNomial(polynomial, pos);
             pos += nomialLength;
             var (exp, expLength) = ParseExp(polynomial, pos);
             pos += expLength;
-            Monomial<T> monomial = new Monomial<T>(coef, nomial, exp);
-            if (monomial.GetNomial() == "x")
-                monomials.Add(monomial);
-            else if (monomial.GetNomial() == "")
-                monomials.Add(monomial);
-
+            var monomial = new Monomial<T>(coef, nomial, exp,isMultiplication);
+            monomials.Add(monomial);
         }
-
-        
         return monomials;
     }
 }

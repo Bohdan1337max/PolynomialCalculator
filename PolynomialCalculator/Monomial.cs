@@ -5,55 +5,53 @@ using System.Numerics;
 
 namespace PolynomialCalculator
 {
-    //TODO write method ifmonomiel has same coef
     public class Monomial<T> where T : INumber<T>
     {
-        private string _nomial;
-        private T _coefficient;
-        private int _exponent ;
+        public string Nomial { get; }
+        public T Coefficient { get; }
+        public int Exponent { get; }
+        public bool IsMultiplication { get; }
+        //add checking!!!
 
+        public Monomial(T coefficient, string nomial = "", int exponent = 1, bool isMultiplication = false)
+        {
+            Nomial = nomial;
+            Coefficient = coefficient;
+            IsMultiplication = isMultiplication;
+            Exponent = exponent;
 
+        }
         
-        public Monomial(T coefficient, string nomial = "", int exponent = 1)
+        public bool HaveSameNomial(Monomial<T> monomial)
         {
-            _nomial = nomial;
-            _coefficient = coefficient;
-            _exponent = exponent;
-
+            var isSameNomial = this.Nomial == monomial.Nomial && this.Exponent == monomial.Exponent;
+            return isSameNomial;
         }
-
-        public int GetExp()
-        {
-            return _exponent;
-        }
-
-        public string GetNomial()
-        {
-            return _nomial;
-        }
-
-
+        
         public static Monomial<T> operator +(Monomial<T> mnLeft, Monomial<T> mnRight)
         {
-            return new Monomial<T>(mnLeft._coefficient + mnRight._coefficient,
-                    mnLeft._nomial,
-                    mnLeft._exponent);
+            return new Monomial<T>(mnLeft.Coefficient + mnRight.Coefficient,
+                mnLeft.Nomial,mnLeft.Exponent,mnLeft.IsMultiplication );
         }
 
         public static Monomial<T> operator -(Monomial<T> mnLeft, Monomial<T> mnRight)
         {
-            {
-                return new Monomial<T>(mnLeft._coefficient - mnRight._coefficient,
-                    mnLeft._nomial,
-                    mnLeft._exponent);
-            }
+            return new Monomial<T>(mnLeft.Coefficient + mnRight.Coefficient,
+                mnLeft.Nomial,mnLeft.Exponent,mnLeft.IsMultiplication);
+        }
+
+        public static Monomial<T> operator *(Monomial<T> mnLeft, Monomial<T> mnRight)
+        {
+            return new Monomial<T>(mnLeft.Coefficient * mnRight.Coefficient,
+                mnLeft.Nomial,mnLeft.Exponent * mnRight.Exponent,mnLeft.IsMultiplication);
         }
 
         public override string ToString()
         {
-            return $"coefficient {_coefficient}" +
-                   $"nomial {_nomial}" +
-                   $"exponent {_exponent}";
+            return $"coefficient: {Coefficient} " +
+                   $"nomial: {Nomial} " +
+                   $"exponent: {Exponent} " +
+                   $"isMult: {IsMultiplication} ";
         }
     }
 }

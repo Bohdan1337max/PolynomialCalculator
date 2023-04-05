@@ -5,17 +5,27 @@ namespace PolynomialCalculator;
 
 public class Polynomial<T> where T : INumber<T>
 {
-    //TODO Use method if can we make action monomial and return this as the result
-    public List<Monomial<T>> Monomials { get; } = new List<Monomial<T>>();
-
-   
-
-
-
-
-    public Monomial<T> Add(Monomial<T> mnR, Monomial<T> mnL)
+    private List<Monomial<T>> _monomials;
+    
+    public Polynomial(List<Monomial<T>> poly)
     {
-        return mnR + mnL;
+        _monomials = poly;
+    }
+    
+    
+    public static Polynomial<T> operator +(Polynomial<T> a, Polynomial<T>b)
+    {
+        return a;
+    }
+    
+    public static Polynomial<T> operator -(Polynomial<T> a, Polynomial<T> b)
+    {
+        return a;
+    }
+    
+    public static Polynomial<T> operator *(Polynomial<T> a, Polynomial<T> b)
+    {
+        return a;
     }
     
 }
