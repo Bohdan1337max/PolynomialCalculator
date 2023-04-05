@@ -90,6 +90,12 @@ public partial class Form1 : Form
 
         
     }
+
+    private void SaveToFile(string poly)
+    {
+        string saveVersion = poly + Environment.NewLine;
+        File.AppendAllText("history.txt", saveVersion);
+    }
     
     
 
