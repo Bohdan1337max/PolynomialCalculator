@@ -38,57 +38,43 @@ public partial class Form1 : Form
 //2*3
     private void PolynomialHandler<T>(string polynomial) where T : INumber<T>
     {
-        var result = new List<Monomial<T>>();
         var poly = MonomialParser<T>(polynomial);
-        string mono = "";
-        for (int i = 0; i < poly.Count(); i++)
+        for (var i = 0; i < poly.Count(); i++)
         {
-            if (poly[i].IsMultiplication)
-            {
-                poly[i - 1] *= poly[i];
-                poly.Remove(poly[i]);
-                i--;
-            }
-            
-        }
-        
-        for (int i = 0; i < poly.Count; i++)
-        {
-            for (int j = i + 1; j < poly.Count  ; j++)
-            {
-                if (poly[i].HaveSameNomial(poly[j]))
-                {
-                    poly[i] += poly[j];
-                    poly.Remove(poly[j]);
-                    j--;
-                }
-                else
-                {
-                    result.Add(poly[i]);
-                }
-            }
-            result.Add(poly[i]);
-        }
-        
-        //Print<T>(poly);
-        
-        foreach (var monomial in poly)
-        {
-            mono += monomial.ToString();
-        }
+            if (!poly[i].IsMultiplication) continue;
+            poly[i - 1] *= poly[i];
+            poly.Remove(poly[i]);
+            i--;
 
-        if (mono[0] == '+')
-        {
-            mono.TrimStart('+');
         }
-        textBox1.Text = mono;
-
+        
+        for (var i = 0; i < poly.Count; i++)
+        {
+            for (var j = i + 1; j < poly.Count  ; j++)
+            {
+                if (!poly[i].HaveSameNomial(poly[j])) continue;
+                poly[i] += poly[j];
+                poly.Remove(poly[j]);
+                j--;
+            }
+        }
+        Print(poly);
     }
 
     private void Print<T>(List<Monomial<T>> poly) where T : INumber<T>
     {
+        var result = "";
+        foreach (var monomial in poly)
+        {
+            result += monomial.ToString();
+        }
 
-        
+        if (result[0] == '+')
+        {
+            result= result.TrimStart('+');
+        }
+
+        textBox1.Text = result;
     }
     
     
@@ -169,7 +155,7 @@ public partial class Form1 : Form
     }
     // 3+1,28-2
     // -2x^3+2x^2-2x+1
-    public List<Monomial<T>> MonomialParser<T>(string polynomial) where T : INumber<T>
+    private List<Monomial<T>> MonomialParser<T>(string polynomial) where T : INumber<T>
     {
         var monomials = new List<Monomial<T>>();
         var pos = 0;
