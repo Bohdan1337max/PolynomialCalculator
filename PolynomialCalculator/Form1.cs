@@ -75,10 +75,6 @@ public partial class Form1 : Form
         }
     }
     
-
-    //Pars operators
-    //make class node three
-    //
     
 
     // -1,3+128-2
