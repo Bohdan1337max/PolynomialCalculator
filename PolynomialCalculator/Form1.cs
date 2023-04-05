@@ -4,7 +4,7 @@ namespace PolynomialCalculator;
 
 public partial class Form1 : Form
 {
-    
+
     public Form1()
     {
         InitializeComponent();
@@ -35,7 +35,7 @@ public partial class Form1 : Form
     }
 
 
-//2*3
+    //2*3
     private void PolynomialHandler<T>(string polynomial) where T : INumber<T>
     {
         var poly = MonomialParser<T>(polynomial);
@@ -47,10 +47,10 @@ public partial class Form1 : Form
             i--;
 
         }
-        
+
         for (var i = 0; i < poly.Count; i++)
         {
-            for (var j = i + 1; j < poly.Count  ; j++)
+            for (var j = i + 1; j < poly.Count; j++)
             {
                 if (!poly[i].HaveSameNomial(poly[j])) continue;
                 poly[i] += poly[j];
@@ -71,7 +71,7 @@ public partial class Form1 : Form
 
         if (result[0] == '+')
         {
-            result= result.TrimStart('+');
+            result = result.TrimStart('+');
         }
         SaveToFile(result);
         textBox1.Text = result;
@@ -82,8 +82,8 @@ public partial class Form1 : Form
         string saveVersion = poly + Environment.NewLine;
         File.AppendAllText("history.txt", saveVersion);
     }
-    
-    
+
+
 
     // -1,3+128-2
     // -2x^3+2x^2-2x+1
@@ -99,7 +99,7 @@ public partial class Form1 : Form
         }
         while (coef.Length == 0 || coef.Length >= 1 &&
                (polynomial[pos] != '+' && polynomial[pos] != '-' && polynomial[pos] != 'x' && polynomial[pos] != '*'
-                &&  polynomial[pos] != '^'))
+                && polynomial[pos] != '^'))
         {
             if (polynomial[pos] == '*')
             {
@@ -116,10 +116,10 @@ public partial class Form1 : Form
         }
         return coef switch
         {
-            "x" => (T.Parse("1", null), 1,isMultiplication),
-            "+" => (T.Parse("1", null), 1,isMultiplication),
-            "-" => (T.Parse("-1", null), 1,isMultiplication),
-            _ => (T.Parse(coef, null), lenght,isMultiplication)
+            "x" => (T.Parse("1", null), 1, isMultiplication),
+            "+" => (T.Parse("1", null), 1, isMultiplication),
+            "-" => (T.Parse("-1", null), 1, isMultiplication),
+            _ => (T.Parse(coef, null), lenght, isMultiplication)
         };
     }
 
@@ -144,7 +144,7 @@ public partial class Form1 : Form
         {
             pos++;
             lenght++;
-            while (polynomial[pos] != '+' && polynomial[pos] != '-' && polynomial[pos] != '*' && pos != polynomial.Length )
+            while (polynomial[pos] != '+' && polynomial[pos] != '-' && polynomial[pos] != '*' && pos != polynomial.Length)
             {
                 exp += polynomial[pos];
                 lenght++;
@@ -167,13 +167,13 @@ public partial class Form1 : Form
         var pos = 0;
         while (pos < polynomial.Length)
         {
-            var (coef, coefLength,isMultiplication) = ParseCoefficient<T>(polynomial, pos);
+            var (coef, coefLength, isMultiplication) = ParseCoefficient<T>(polynomial, pos);
             pos += coefLength;
             var (nomial, nomialLength) = ParseNomial(polynomial, pos);
             pos += nomialLength;
             var (exp, expLength) = ParseExp(polynomial, pos);
             pos += expLength;
-            var monomial = new Monomial<T>(coef, nomial, exp,isMultiplication);
+            var monomial = new Monomial<T>(coef, nomial, exp, isMultiplication);
             monomials.Add(monomial);
         }
         return monomials;
