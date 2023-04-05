@@ -35,14 +35,19 @@ public partial class Form1 : Form
     }
 
 
-//x^2+2x+x^2
+//2*3
     private void PolynomialHandler<T>(string polynomial) where T : INumber<T>
     {
         var result = new List<Monomial<T>>();
         var poly = MonomialParser<T>(polynomial);
         for (int i = 0; i < poly.Count(); i++)
         {
-            
+            if (poly[i].IsMultiplication)
+            {
+                poly[i - 1] *= poly[i];
+                poly.Remove(poly[i]);
+                i--;
+            }
             
         }
         
