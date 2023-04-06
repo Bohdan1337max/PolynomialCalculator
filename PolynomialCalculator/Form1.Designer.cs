@@ -35,20 +35,25 @@ partial class Form1
         label2 = new Label();
         textBox1 = new TextBox();
         label3 = new Label();
+        menuStrip1 = new MenuStrip();
+        historyToolStripMenuItem = new ToolStripMenuItem();
+        menuStrip1.SuspendLayout();
         SuspendLayout();
         // 
         // PolynomialInput
         // 
-        PolynomialInput.Location = new Point(323, 74);
+        PolynomialInput.Location = new Point(369, 99);
+        PolynomialInput.Margin = new Padding(3, 4, 3, 4);
         PolynomialInput.Name = "PolynomialInput";
-        PolynomialInput.Size = new Size(387, 23);
+        PolynomialInput.Size = new Size(442, 27);
         PolynomialInput.TabIndex = 0;
         // 
         // CalculateButton
         // 
-        CalculateButton.Location = new Point(750, 73);
+        CalculateButton.Location = new Point(857, 97);
+        CalculateButton.Margin = new Padding(3, 4, 3, 4);
         CalculateButton.Name = "CalculateButton";
-        CalculateButton.Size = new Size(75, 23);
+        CalculateButton.Size = new Size(86, 31);
         CalculateButton.TabIndex = 1;
         CalculateButton.Text = "Calculate";
         CalculateButton.UseVisualStyleBackColor = true;
@@ -58,9 +63,9 @@ partial class Form1
         // 
         label1.AutoSize = true;
         label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-        label1.Location = new Point(163, 147);
+        label1.Location = new Point(186, 196);
         label1.Name = "label1";
-        label1.Size = new Size(86, 30);
+        label1.Size = new Size(109, 37);
         label1.TabIndex = 2;
         label1.Text = "Answer:";
         label1.Click += label1_Click;
@@ -68,43 +73,66 @@ partial class Form1
         // label2
         // 
         label2.AutoSize = true;
-        label2.Location = new Point(340, 147);
+        label2.Location = new Point(389, 196);
         label2.Name = "label2";
-        label2.Size = new Size(0, 15);
+        label2.Size = new Size(0, 20);
         label2.TabIndex = 3;
         // 
         // textBox1
         // 
-        textBox1.Location = new Point(255, 147);
+        textBox1.Location = new Point(291, 196);
+        textBox1.Margin = new Padding(3, 4, 3, 4);
         textBox1.Multiline = true;
         textBox1.Name = "textBox1";
         textBox1.ReadOnly = true;
-        textBox1.Size = new Size(570, 36);
+        textBox1.Size = new Size(651, 47);
         textBox1.TabIndex = 4;
         // 
         // label3
         // 
         label3.AutoSize = true;
         label3.Font = new Font("Showcard Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        label3.Location = new Point(422, 31);
+        label3.Location = new Point(482, 41);
         label3.Name = "label3";
-        label3.Size = new Size(170, 20);
+        label3.Size = new Size(210, 26);
         label3.TabIndex = 5;
         label3.Text = "Write Polynomial";
         // 
+        // menuStrip1
+        // 
+        menuStrip1.ImageScalingSize = new Size(20, 20);
+        menuStrip1.Items.AddRange(new ToolStripItem[] { historyToolStripMenuItem });
+        menuStrip1.Location = new Point(0, 0);
+        menuStrip1.Name = "menuStrip1";
+        menuStrip1.Size = new Size(1161, 28);
+        menuStrip1.TabIndex = 6;
+        menuStrip1.Text = "menuStrip1";
+        // 
+        // historyToolStripMenuItem
+        // 
+        historyToolStripMenuItem.Name = "historyToolStripMenuItem";
+        historyToolStripMenuItem.Size = new Size(70, 24);
+        historyToolStripMenuItem.Text = "History";
+        historyToolStripMenuItem.Click += historyToolStripMenuItem_Click;
+        // 
         // Form1
         // 
-        AutoScaleDimensions = new SizeF(7F, 15F);
+        AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(1016, 565);
+        ClientSize = new Size(1161, 753);
         Controls.Add(label3);
         Controls.Add(textBox1);
         Controls.Add(label2);
         Controls.Add(label1);
         Controls.Add(CalculateButton);
         Controls.Add(PolynomialInput);
+        Controls.Add(menuStrip1);
+        MainMenuStrip = menuStrip1;
+        Margin = new Padding(3, 4, 3, 4);
         Name = "Form1";
         Text = "Polynomial Calculator";
+        menuStrip1.ResumeLayout(false);
+        menuStrip1.PerformLayout();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -117,4 +145,6 @@ partial class Form1
     private Label label2;
     private TextBox textBox1;
     private Label label3;
+    private MenuStrip menuStrip1;
+    private ToolStripMenuItem historyToolStripMenuItem;
 }

@@ -4,9 +4,10 @@ namespace PolynomialCalculator;
 
 public partial class Form1 : Form
 {
-
+    Form2 f = new Form2();
     public Form1()
     {
+        
         InitializeComponent();
     }
 
@@ -159,6 +160,13 @@ public partial class Form1 : Form
         }
         return (int.Parse(exp), lenght);
     }
+
+    private void historyToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        f.updateHistory();
+        f.Show();
+    }
+
     // 3+1,28-2
     // -2x^3+2x^2-2x+1
     private List<Monomial<T>> MonomialParser<T>(string polynomial) where T : INumber<T>

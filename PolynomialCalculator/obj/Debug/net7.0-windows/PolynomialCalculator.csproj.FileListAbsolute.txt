@@ -49,3 +49,4 @@ C:\Users\siros\Source\Repos\PolynomialCalculatorLast\PolynomialCalculator\obj\De
 C:\Users\siros\Source\Repos\PolynomialCalculatorLast\PolynomialCalculator\obj\Debug\net7.0-windows\PolynomialCalculator.pdb
 C:\Users\siros\Source\Repos\PolynomialCalculatorLast\PolynomialCalculator\obj\Debug\net7.0-windows\PolynomialCalculator.genruntimeconfig.cache
 C:\Users\siros\Source\Repos\PolynomialCalculatorLast\PolynomialCalculator\obj\Debug\net7.0-windows\ref\PolynomialCalculator.dll
+C:\Users\siros\source\repos\PolynomialCalculatorLast\PolynomialCalculator\obj\Debug\net7.0-windows\PolynomialCalculator.Form2.resources

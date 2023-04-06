@@ -42,33 +42,44 @@ namespace PolynomialCalculator
 
         public static Monomial<T> operator *(Monomial<T> mnLeft, Monomial<T> mnRight)
         {
-            return new Monomial<T>(mnLeft.Coefficient * mnRight.Coefficient,
-                mnLeft.Nomial,mnLeft.Exponent * mnRight.Exponent,mnLeft.IsMultiplication);
+            if ((mnLeft.Coefficient.ToString().Contains('1') && mnLeft.Nomial == ""))
+                return new Monomial<T>(mnRight.Coefficient, mnRight.Nomial, mnRight.Exponent, mnRight.IsMultiplication);
+            else if ((mnRight.Coefficient.ToString().Contains('1') && mnRight.Nomial == ""))
+                return new Monomial<T>(mnLeft.Coefficient, mnLeft.Nomial, mnLeft.Exponent, mnLeft.IsMultiplication);
+            else
+                return new Monomial<T>(mnRight.Coefficient * mnLeft.Coefficient, mnLeft.Nomial, mnLeft.Exponent + mnRight.Exponent, mnRight.IsMultiplication);
         }
 
         public override string ToString()
         {
-            if(Exponent == 1)
+            if (!Coefficient.ToString().Contains('0'))
             {
+                if (Exponent == 1)
+                {
+                    if (!Coefficient.ToString()!.Contains('-'))
+                    {
+                        return $"+{Coefficient}" +
+                       $"{Nomial}";
+                    }
+                    return $"{Coefficient}" +
+                           $"{Nomial}";
+                }
                 if (!Coefficient.ToString()!.Contains('-'))
                 {
                     return $"+{Coefficient}" +
-                   $"{Nomial}";
+                           $"{Nomial}" +
+                           $"^{Exponent}";
                 }
-                return $"{Coefficient}" +
-                       $"{Nomial}";
-            }
-            if (!Coefficient.ToString()!.Contains('-'))
-            {
-                return $"+{Coefficient}" +
-                       $"{Nomial}" +
-                       $"^{Exponent}";
+                else
+                {
+                    return $"{Coefficient}" +
+                           $"{Nomial}" +
+                           $"^{Exponent}";
+                }
             }
             else
             {
-                return $"{Coefficient}" +
-                       $"{Nomial}" +
-                       $"^{Exponent}";
+                return "";
             }
         }
     }
